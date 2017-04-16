@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import{ FormBuilder , FormGroup , FormControl } from '@angular/forms';
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
-declare var jQuery : any;
+declare var $: any;
 @Component({
   selector: 'order-form',
   templateUrl: './order-form.component.html',
@@ -12,7 +12,7 @@ export class OrderFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
 	this.form = this.fb.group({
-		num_commande: '',
+		order_num: '',
 		costumer: '',
 		product : '',
 		quantity : '',
@@ -28,16 +28,21 @@ export class OrderFormComponent implements OnInit {
   	console.log(f);
   }
 
-	@ViewChild('input') input: ElementRef;
+	@ViewChild('order_num') order_num: ElementRef;
+	@ViewChild('costumer') costumer: ElementRef;
+	@ViewChild('product') product: ElementRef;
+	@ViewChild('quantity') quantity: ElementRef;
+	@ViewChild('price') price: ElementRef;
 
-	ngAfterViewInit() {
-		console.log(jQuery(this.input.nativeElement));
-		jQuery(this.input.nativeElement).css({
-			'box-shadow':'2px 2px 3px cyan'
-		});
+
+	ngDoCheck() {
+		if (this.order_num.nativeElement.classList.contains('open')) {
+			$(this).addClass('field-non-valid');
+		}
 	}
 
-	private _save(){
+	private _save(data: FormGroup) {
+		console.log(data);
 
 	}
 

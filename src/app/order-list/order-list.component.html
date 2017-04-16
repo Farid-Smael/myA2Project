@@ -1,3 +1,9 @@
-<p>
-  order-list works!
-</p>
+<div class="row" *ngFor="let order of orderlist">
+
+  <p>Order no : {{order.order_num}}</p>
+  <p>Order costumer : {{order.costumer}}</p>
+  <p>Order product : {{order.product}}</p>
+  <p>Order quantity : {{order.quantity}}</p>
+  <p>Order price : {{order.price}}</p>
+
+</div>
