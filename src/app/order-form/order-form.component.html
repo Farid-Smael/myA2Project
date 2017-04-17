@@ -1,6 +1,7 @@
 <form class="form" [formGroup]="form" (submit)="onSubmit(form.value)">
 	<div class="form-group">
-		<div class="input-group">
+		<div class="input-group"
+		     [ngClass]="{'has-error':!form.get('order_num').valid && form.get('order_num').touched}">
 			<div class="input-group-addon">
 				<i class="fa fa-hashtag" aria-hidden="true"></i>
 			</div>
@@ -10,14 +11,14 @@
 		
 	</div>
 	<div class="form-group">
-		<div class="input-group">
+		<div class="input-group" [ngClass]="{'has-error':!form.get('costumer').valid && form.get('costumer').touched}">
 			<div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
 			<input type="text" #costumer class="form-control" id="costumer" formControlName="costumer" name='costumer'
 			       placeholder="(e.g) Sean Check">
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="input-group">
+		<div class="input-group" [ngClass]="{'has-error':!form.get('product').valid && form.get('product').touched}">
 			<div class="input-group-addon">
 				<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 			</div>
@@ -26,7 +27,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="input-group">
+		<div class="input-group" [ngClass]="{'has-error':!form.get('quantity').valid && form.get('quantity').touched}">
 			<div class="input-group-addon">
 				<i class="fa fa-question" aria-hidden="true"></i>
 			</div>
@@ -35,7 +36,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="input-group">
+		<div class="input-group" [ngClass]="{'has-error':!form.get('price').valid && form.get('price').touched}">
 			<div class="input-group-addon">
 				<i class="fa fa-eur" aria-hidden="true"></i>
 			</div>
@@ -43,7 +44,9 @@
 			       placeholder="(e.g) 200.99">
 		</div>
 	</div>
-	<button class="btn btn-primary" type="submit" id='btn'><i class="fa fa-plus" aria-hidden="true"></i> ADD</button>
+	<button class="btn btn-primary" type="submit" [disabled]="!form.valid" id='btn'><i class="fa fa-plus"
+	                                                                                   aria-hidden="true"></i> ADD
+	</button>
 	<br>
-	{{ form.value | json}}
+	<!--{{ form.get('costumer').touched}}-->
 </form>
