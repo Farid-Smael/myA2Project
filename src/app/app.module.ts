@@ -7,6 +7,8 @@ import {AppComponent} from "./app.component";
 import {OrderListComponent} from "./order-list/order-list.component";
 import {OrderFormComponent} from "./order-form/order-form.component";
 import {OrderPipe} from "./order.pipe";
+import {OrderService} from "./order.service";
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import {OrderPipe} from "./order.pipe";
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [ ],
+	providers: [OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

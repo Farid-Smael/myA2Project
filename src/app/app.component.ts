@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import {OrderListComponent} from './order-list/order-list.component';
-import {OrderFormComponent} from './order-form/order-form.component';
+import {Component} from "@angular/core";
 
 
 @Component({
