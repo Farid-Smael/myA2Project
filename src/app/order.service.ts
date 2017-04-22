@@ -40,12 +40,12 @@ export class OrderService implements OnInit {
 	 * @type : object
 	 * */
 	addOrder(order: object) {
+
 		// Add to order list object
-		//console.log(order);
 		this._orderlist.push(order);
-		// console.log(this._orderlist);
+
+		// Call the save function to save into localstorage
 		this._save();
-		//this._restore();
 
 	}
 
@@ -59,12 +59,13 @@ export class OrderService implements OnInit {
 	}
 
 	private _save() {
+
 		// save on local storage
-		//console.log(JSON.stringify(this.orderlist));
 		localStorage.setItem("sc__orderlist", JSON.stringify(this._orderlist));
 	}
 
 	private _init() {
+
 		localStorage.setItem("sc__orderlist", "null");
 	}
 
@@ -74,6 +75,8 @@ export class OrderService implements OnInit {
 		if (localStorage.getItem("sc__orderlist") != null) {
 
 			// is True, i remove the current values in collection
+			// to the new from localstorage
+
 			this._orderlist = [];
 
 			var arr = JSON.parse(localStorage.getItem("sc__orderlist"));

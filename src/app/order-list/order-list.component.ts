@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, DoCheck} from "@angular/core";
 import {OrderService} from "../order.service";
 
 @Component({
@@ -7,17 +7,15 @@ import {OrderService} from "../order.service";
 	styleUrls: ['./order-list.component.scss'],
 	providers: [OrderService]
 })
-export class OrderListComponent implements OnInit {
+export class OrderListComponent implements DoCheck {
 
 	public orderlist: object[] = []; // mon erruer ce fut ici
 
 	constructor(private _os: OrderService) {
 	}
 
-  ngOnInit() {
-	  //console.log(this._os.getOrderList());
+	ngDoCheck() {
 	  this.orderlist = this._os.getOrderList();
-	  //console.log(this._os.getOrderList());
   }
 
 }

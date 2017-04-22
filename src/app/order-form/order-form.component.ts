@@ -1,14 +1,19 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {Component, ElementRef, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderService} from "../order.service";
 
+// The jQuery library
 declare var $: any;
+
 @Component({
   selector: 'order-form',
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss']
 })
-export class OrderFormComponent implements OnInit {
+
+export class OrderFormComponent {
+
+	// Declarate the FormGroup
 	f: FormGroup;
 
 	constructor(private fb: FormBuilder, private _os: OrderService) {
@@ -21,12 +26,8 @@ export class OrderFormComponent implements OnInit {
 		});
 	}
 
-	ngOnInit() {
-	}
-
 	onSubmit(f: FormGroup) {
 
-		// console.log(f.get('order_num').value);
 		this._os.addOrder({
 			'order_num': f.get('order_num').value,
 			'costumer': f.get('costumer').value,
@@ -41,7 +42,4 @@ export class OrderFormComponent implements OnInit {
 	@ViewChild('product') product: ElementRef;
 	@ViewChild('quantity') quantity: ElementRef;
 	@ViewChild('price') price: ElementRef;
-
-
-
 }
