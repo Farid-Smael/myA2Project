@@ -43,33 +43,17 @@ export class OrderService implements OnInit {
 		// Add to order list object
 		//console.log(order);
 		this._orderlist.push(order);
-		//console.log(this.orderlist);
+		// console.log(this._orderlist);
 		this._save();
+		//this._restore();
+
 	}
 
 	/*
 	 * */
 	getOrderList() {
 
-		// Restore all data from local storage database if get it
-		if (localStorage.getItem("sc__orderlist") != null) {
-
-			// is True, i remove the current values in collection
-			this._orderlist = [];
-
-			// Right now , i fill the collection
-			var arr = this._restore();
-			console.log(arr); // debug
-			arr.forEach(function (elem) {
-				//console.log(elem);
-				this._orderlist.push(elem); // erreur ici
-			});
-
-		}
-		else {
-			this._init();
-		}
-
+		this._restore();
 		// return the collection
 		return this._orderlist;
 	}
@@ -85,8 +69,21 @@ export class OrderService implements OnInit {
 	}
 
 	private _restore() {
-		this._orderlist = [];
-		return JSON.parse(localStorage.getItem("sc__orderlist"));
+
+		// Restore all data from local storage database if get it
+		if (localStorage.getItem("sc__orderlist") != null) {
+
+			// is True, i remove the current values in collection
+			this._orderlist = [];
+
+			var arr = JSON.parse(localStorage.getItem("sc__orderlist"));
+
+			// Right now , i fill the collection
+			for (var i = 0; i < arr.length; i++) {
+				this._orderlist.push(arr[i]);
+			}
+		}
+		return this;
 	}
 
 }
