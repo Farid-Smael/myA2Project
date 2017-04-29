@@ -27,7 +27,11 @@ export class OrderService implements OnInit {
 			price: this._price
 		});
 
-		this._save();
+		// before erase the data, i check if exist it in localstorage
+		if (typeof localStorage.getItem('is_defined') === 'undefined') {
+			this._save();
+		}
+		localStorage.setItem('is_defined', 'true');
 	}
 
 	ngOnInit() {
