@@ -1,5 +1,5 @@
 import {Component, DoCheck} from "@angular/core";
-import {OrderService} from "../order.service";
+import {OrderService} from "../../Services/order-service/order.service";
 
 @Component({
   selector: 'order-list',

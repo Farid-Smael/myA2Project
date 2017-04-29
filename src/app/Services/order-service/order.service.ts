@@ -46,6 +46,7 @@ export class OrderService implements OnInit {
 		// Call the save function to save into localstorage
 		this._save();
 		return this;
+
 	}
 
 	getOrderList() {
@@ -70,7 +71,7 @@ export class OrderService implements OnInit {
 	private _restore() {
 
 		// Restore all data from local storage database if get it
-		if (localStorage.getItem('is_defined') === 'true') {
+		if (localStorage.getItem("sc__orderlist") != null) {
 
 			// is true : empty the current values in collection
 			this._orderlist = [];

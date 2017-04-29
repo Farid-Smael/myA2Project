@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+form .input-group-addon i.fa{
+  width:25px;
+}
+
+.field-non-valid{
+  box-shadow:1px 1px 2px darkred;
+}
+
+.alert-height{
+  margin-top:8px;
+  max-height:48px;
+
+  em{
+    font-size:11px;
+    font-family:'Roboto', serif;
+    font-style:normal;
+  }
+}

@@ -1,4 +1,4 @@
-import { OrderPipe } from './order.pipe';
+import {OrderPipe} from "./order.pipe";
 
 describe('OrderPipe', () => {
   it('create an instance', () => {

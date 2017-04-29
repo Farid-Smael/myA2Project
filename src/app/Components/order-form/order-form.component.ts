@@ -1,6 +1,6 @@
 import {Component, ElementRef, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {OrderService} from "../order.service";
+import {OrderService} from "../../Services/order-service/order.service";
 
 // The jQuery library
 declare var $: any;
@@ -26,15 +26,16 @@ export class OrderFormComponent {
 		});
 	}
 
-	onSubmit(f: FormGroup) {
+	onSubmit(form: FormGroup) {
 
 		this._os.addOrder({
-			'order_num': f.get('order_num').value,
-			'costumer': f.get('costumer').value,
-			'product': f.get('product').value,
-			'quantity': f.get('quantity').value,
-			'price': f.get('price').value
+			'order_num': form.get('order_num').value,
+			'costumer': form.get('costumer').value,
+			'product': form.get('product').value,
+			'quantity': form.get('quantity').value,
+			'price': form.get('price').value
 		});
+		this.f.reset();
 	}
 
 	@ViewChild('order_num') order_num: ElementRef;
