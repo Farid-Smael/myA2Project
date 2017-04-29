@@ -29,20 +29,15 @@ export class OrderService implements OnInit {
 
 		// before erase the data, i check if exist it in localstorage
 		if (typeof localStorage.getItem('is_defined') === 'undefined') {
+			localStorage.setItem('is_defined', 'true');
 			this._save();
 		}
-		localStorage.setItem('is_defined', 'true');
+		return this;
 	}
 
 	ngOnInit() {
-
-
 	}
 
-	/*
-	 * @param : order
-	 * @type : object
-	 * */
 	addOrder(order: object) {
 
 		// Add to order list object
@@ -50,11 +45,9 @@ export class OrderService implements OnInit {
 
 		// Call the save function to save into localstorage
 		this._save();
-
+		return this;
 	}
 
-	/*
-	 * */
 	getOrderList() {
 
 		this._restore();
@@ -71,21 +64,21 @@ export class OrderService implements OnInit {
 	private _init() {
 
 		localStorage.setItem("sc__orderlist", "null");
+		return this;
 	}
 
 	private _restore() {
 
 		// Restore all data from local storage database if get it
-		if (localStorage.getItem("sc__orderlist") != null) {
+		if (localStorage.getItem('is_defined') === 'true') {
 
-			// is True, i remove the current values in collection
-			// to the new from localstorage
-
+			// is true : empty the current values in collection
 			this._orderlist = [];
 
 			var arr = JSON.parse(localStorage.getItem("sc__orderlist"));
 
 			// Right now , i fill the collection
+			// with values from local storage
 			for (var i = 0; i < arr.length; i++) {
 				this._orderlist.push(arr[i]);
 			}
