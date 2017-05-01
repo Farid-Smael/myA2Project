@@ -8,7 +8,8 @@ import {OrderListComponent} from "./Components/order-list/order-list.component";
 import {OrderFormComponent} from "./Components/order-form/order-form.component";
 import {OrderPipe} from "./Pipes/order-pipe/order.pipe";
 import {OrderService} from "./Services/order-service/order.service";
-import {OrderPipeFormComponent} from "./Components/order-pipe-form/order-pipe-form.component";
+
+
 
 
 @NgModule({
@@ -16,8 +17,7 @@ import {OrderPipeFormComponent} from "./Components/order-pipe-form/order-pipe-fo
     AppComponent,
     OrderListComponent,
     OrderFormComponent,
-	  OrderPipe,
-	  OrderPipeFormComponent
+	OrderPipe,
   ],
   imports: [
     BrowserModule,
